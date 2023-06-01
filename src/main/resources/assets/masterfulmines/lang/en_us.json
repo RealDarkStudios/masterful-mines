@@ -1,3 +1,19 @@
 {
-  "item.masterfulmines.forgium_ingot": "Forgium Ingot"
+  "itemGroup.masterfulmines": "Masterful Mines",
+
+  "item.masterfulmines.raw_forgium": "Raw Forgium",
+  "item.masterfulmines.forgium_ingot": "Forgium Ingot",
+  "item.masterfulmines.forgium_nugget": "Forgium Nugget",
+  "item.masterfulmines.forgium_sword": "Forgium Sword",
+  "item.masterfulmines.forgium_pickaxe": "Forgium Pickaxe",
+  "item.masterfulmines.forgium_axe": "Forgium Axe",
+  "item.masterfulmines.forgium_shovel": "Forgium Shovel",
+  "item.masterfulmines.forgium_hoe": "Forgium Hoe",
+  "item.masterfulmines.forgium_helmet": "Forgium Helmet",
+  "item.masterfulmines.forgium_chestplate": "Forgium Chestplater",
+  "item.masterfulmines.forgium_leggings": "Forgium Leggings",
+  "item.masterfulmines.forgium_boots": "Forgium Boots",
+
+  "block.masterfulmines.forgium_block": "Forgium Block",
+  "block.masterfulmines.forgium_ore": "Forgium Ore"
 }

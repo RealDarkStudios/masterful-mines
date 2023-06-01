@@ -10,14 +10,27 @@ import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModItemModelProvider extends ItemModelProvider {
-    public ModItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
+public class MMItemModelProvider extends ItemModelProvider {
+    public MMItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
         super(generator, MasterfulMines.MODID, existingFileHelper);
     }
 
     @Override
     protected void registerModels() {
+        /* FORGIUM ITEMS */
+
         simpleItem(MMItems.FORGIUM_INGOT);
+        simpleItem(MMItems.FORGIUM_NUGGET);
+        simpleItem(MMItems.RAW_FORGIUM);
+        handheldItem(MMItems.FORGIUM_SWORD);
+        handheldItem(MMItems.FORGIUM_PICKAXE);
+        handheldItem(MMItems.FORGIUM_AXE);
+        handheldItem(MMItems.FORGIUM_SHOVEL);
+        handheldItem(MMItems.FORGIUM_HOE);
+        simpleItem(MMItems.FORGIUM_HELMET);
+        simpleItem(MMItems.FORGIUM_CHESTPLATE);
+        simpleItem(MMItems.FORGIUM_LEGGINGS);
+        simpleItem(MMItems.FORGIUM_BOOTS);
     }
 
 
