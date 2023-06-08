@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "forgium_helmet",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    }
+  },
+  "pattern": [
+    "iii",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_helmet"
+  },
+  "show_notification": true
+}

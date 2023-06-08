@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "forgium_boots",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    }
+  },
+  "pattern": [
+    "i i",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_boots"
+  },
+  "show_notification": true
+}

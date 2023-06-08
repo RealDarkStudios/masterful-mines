@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "forgium_axe",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ii",
+    "is",
+    " s"
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_axe"
+  },
+  "show_notification": true
+}

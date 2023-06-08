@@ -1,0 +1,41 @@
+modLoader = "javafml" #mandatory
+loaderVersion = "[43,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license = "MIT"
+#issueTrackerURL="http://my.issue.tracker/" #optional
+[[mods]] #mandatory
+modId = "masterfulmines" #mandatory
+version = "1.19.2-0.2.0.4" #mandatory
+displayName = "Masterful Mines" #mandatory
+#updateJSONURL="http://myurl.me/" #optional
+#displayURL="http://example.com/" #optional
+#logoFile="rdslib.png" #optional
+#credits="Thanks for this example mod goes to Java" #optional
+authors = "RealDarkStudios" #optional
+displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
+
+description = '''
+A mining mod by RealDarkStudios.
+
+Obtain all of the new ores, and explore all of the mines! Who knows what you will find?
+'''
+[[dependencies.masterfulmines]] #optional
+# the modid of the dependency
+modId = "forge" #mandatory
+mandatory = true #mandatory
+versionRange = "[46,)" #mandatory
+ordering = "BEFORE"
+side = "BOTH"
+
+[[dependencies.masterfulmines]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,1.20.1)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.masterfulmines]]
+modId = "rdslib"
+mandatory = true
+versionRange = "[1.20-0.2.0.3,1.20-0.3.0)"
+ordering = "NONE"
+side = "BOTH"
