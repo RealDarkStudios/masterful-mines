@@ -18,5 +18,4 @@ public class MMLootTableProvider extends LootTableProvider {
     public List<LootTableProvider.SubProviderEntry> getTables() {
         return List.of(new LootTableProvider.SubProviderEntry(MMBlockLootTables::new, LootContextParamSets.BLOCK));
     }
-
 }

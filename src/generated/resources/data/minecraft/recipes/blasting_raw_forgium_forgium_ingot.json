@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 2.0,
+  "group": "forgium_ingot",
+  "ingredient": {
+    "item": "masterfulmines:raw_forgium"
+  },
+  "result": "masterfulmines:forgium_ingot"
+}
