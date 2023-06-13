@@ -26,6 +26,13 @@ public class MMBlocks {
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(5f, 30f)
                     .requiresCorrectToolForDrops(), UniformInt.of(2, 5)), MMItems.FORGIUM_ITEM_PROPERTIES);
 
+    public static final RegistryObject<Block> STRONKIUM_BLOCK = registerBlock("stronkium_block",
+            () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(10, 200f).requiresCorrectToolForDrops()),
+            MMItems.STRONKIUM_ITEM_PROPERTIES);
+    public static final RegistryObject<Block> STRONKIUM_ORE = registerBlock("stronkium_ore",
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(8f, 50f)
+                    .requiresCorrectToolForDrops(), UniformInt.of(4, 8)), MMItems.STRONKIUM_ITEM_PROPERTIES);
+
     private static <T extends Block> RegistryObject<T> registerBlock(String pName, Supplier<T> pBlock, Item.Properties pProperties) {
         RegistryObject<T> toReturn = BLOCKS.register(pName, pBlock);
         registerBlockItem(pName, toReturn, pProperties);

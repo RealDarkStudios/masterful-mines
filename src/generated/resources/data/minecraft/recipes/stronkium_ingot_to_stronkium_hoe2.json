@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_hoe",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ii",
+    "s ",
+    "s "
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_hoe"
+  },
+  "show_notification": true
+}

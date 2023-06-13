@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_helmet",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    }
+  },
+  "pattern": [
+    "iii",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_helmet"
+  },
+  "show_notification": true
+}

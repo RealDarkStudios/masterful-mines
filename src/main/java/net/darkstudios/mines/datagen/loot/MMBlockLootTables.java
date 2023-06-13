@@ -26,6 +26,8 @@ public class MMBlockLootTables extends BlockLootSubProvider {
     protected void generate() {
         this.dropSelf(MMBlocks.FORGIUM_BLOCK.get());
         this.add(MMBlocks.FORGIUM_ORE.get(), (forgiumOre) -> createOreDrop(forgiumOre, MMItems.RAW_FORGIUM.get()));
+        this.dropSelf(MMBlocks.STRONKIUM_BLOCK.get());
+        this.add(MMBlocks.STRONKIUM_ORE.get(), (stronkiumOre) -> createOreDrop(stronkiumOre, MMItems.RAW_STRONKIUM.get()));
     }
 
     @Override

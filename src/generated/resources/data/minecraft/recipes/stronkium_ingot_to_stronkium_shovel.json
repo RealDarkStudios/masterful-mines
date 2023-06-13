@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_shovel",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "i",
+    "s",
+    "s"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_shovel"
+  },
+  "show_notification": true
+}

@@ -8,6 +8,7 @@ import net.minecraft.util.LazyLoadedValue;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.ArmorItem;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 import javax.annotation.Nullable;
@@ -16,10 +17,21 @@ import java.util.function.Supplier;
 
 
 public enum MMArmorMaterials implements IArmorEffectMaterial {
+    // pDuration should be 1 if you want effect to immediately go away upon armor removal
+
     FORGIUM("forgium", 30, new int[]{4, 6, 8, 4}, 17, SoundEvents.ARMOR_EQUIP_NETHERITE,
             4.0F, 0.2F, () -> Ingredient.of(MMItems.FORGIUM_INGOT.get()), List.of(
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0)
-    ));
+    )),
+
+    STRONKIUM("stronkium", 40, new int[]{4, 7, 8, 5}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
+            5.0F, 0.4F, () -> Ingredient.of(MMItems.STRONKIUM_INGOT.get()), List.of(
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1, 1),
+            new MobEffectInstance(MobEffects.ABSORPTION, 1, 0)
+    )),
+
+    BOUNCIUM("bouncium", 5, new int[]{1, 2, 3, 2}, 26, SoundEvents.SLIME_SQUISH,
+            0.0F, 0.0F, () -> Ingredient.of(Items.SLIME_BALL), List.of());
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};
     private final String name;

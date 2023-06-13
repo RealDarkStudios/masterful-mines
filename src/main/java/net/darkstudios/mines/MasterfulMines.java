@@ -4,8 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.items.MMItems;
 import net.darkstudios.mines.items.MMTabs;
-import net.darkstudios.mines.world.feature.MMConfiguredFeatures;
-import net.darkstudios.mines.world.feature.MMPlacedFeatures;
+//import net.darkstudios.mines.items.custom.BounciumBootsItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,8 +17,6 @@ import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
-
-import java.util.List;
 
 @Mod(MasterfulMines.MODID)
 public class MasterfulMines {
@@ -43,7 +40,6 @@ public class MasterfulMines {
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Masterful Mines is starting");
-
     }
 
     @SubscribeEvent

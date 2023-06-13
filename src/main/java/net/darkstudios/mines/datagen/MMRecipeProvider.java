@@ -21,10 +21,16 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     protected void buildRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         oreSmelting(pFinishedRecipeConsumer, MMItems.RAW_FORGIUM.get(), MMItems.FORGIUM_INGOT.get(), 2.0f, 200);
         oreBlasting(pFinishedRecipeConsumer, MMItems.RAW_FORGIUM.get(), MMItems.FORGIUM_INGOT.get(), 2.0f, 100);
+        oreSmelting(pFinishedRecipeConsumer, MMItems.RAW_STRONKIUM.get(), MMItems.STRONKIUM_INGOT.get(), 4.0f, 200);
+        oreBlasting(pFinishedRecipeConsumer, MMItems.RAW_STRONKIUM.get(), MMItems.STRONKIUM_INGOT.get(), 4.0f, 100);
 
         fullSet(pFinishedRecipeConsumer, MMItems.FORGIUM_INGOT.get(), MMItems.FORGIUM_SWORD.get(), MMItems.FORGIUM_PICKAXE.get(),
                 MMItems.FORGIUM_AXE.get(), MMItems.FORGIUM_SHOVEL.get(), MMItems.FORGIUM_HOE.get(), MMItems.FORGIUM_HELMET.get(),
                 MMItems.FORGIUM_CHESTPLATE.get(), MMItems.FORGIUM_LEGGINGS.get(), MMItems.FORGIUM_BOOTS.get());
+
+        fullSet(pFinishedRecipeConsumer, MMItems.STRONKIUM_INGOT.get(), MMItems.STRONKIUM_SWORD.get(), MMItems.STRONKIUM_PICKAXE.get(),
+                MMItems.STRONKIUM_AXE.get(), MMItems.STRONKIUM_SHOVEL.get(), MMItems.STRONKIUM_HOE.get(), MMItems.STRONKIUM_HELMET.get(),
+                MMItems.STRONKIUM_CHESTPLATE.get(), MMItems.STRONKIUM_LEGGINGS.get(), MMItems.STRONKIUM_BOOTS.get());
     }
 
     public static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIn, ItemLike pOut, float pExperience, int pDuration) {

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_pickaxe",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "iii",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_pickaxe"
+  },
+  "show_notification": true
+}
