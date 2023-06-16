@@ -3,23 +3,22 @@ package net.darkstudios.mines.items;
 import net.darkstudios.mines.MasterfulMines;
 import net.darkstudios.mines.util.MMRarities;
 import net.darkstudios.rdslib.util.rarity.Rarities;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.event.CreativeModeTabEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
+
+@Mod.EventBusSubscriber(modid = MasterfulMines.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class MMTabs {
-    public static DeferredRegister<CreativeModeTab> TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MasterfulMines.MODID);
+    public static CreativeModeTab MASTERFUL_MINES;
 
-    public static final RegistryObject<CreativeModeTab> MASTERFUL_MINES = TABS.register("masterfulmines",
-            () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.masterfulmines").setStyle(Rarities.getStyle(MMRarities.FORGIUM)))
-                    .icon(() -> new ItemStack(MMItems.FORGIUM_INGOT.get()))
-                    .build());
-
-    public static void register(IEventBus bus) {
-        TABS.register(bus);
+    @SubscribeEvent
+    public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
+        MASTERFUL_MINES = event.registerCreativeModeTab(new ResourceLocation(MasterfulMines.MODID, "masterful_mines"),
+                builder -> builder.title(Component.translatable("itemGroup.masterfulmines").setStyle(Rarities.getStyle(MMRarities.FORGIUM)))
+                        .icon(() -> new ItemStack(MMItems.FORGIUM_INGOT.get())));
     }
 }

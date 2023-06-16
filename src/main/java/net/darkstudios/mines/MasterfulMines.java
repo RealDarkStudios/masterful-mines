@@ -11,7 +11,7 @@ import net.darkstudios.mines.screen.NetherBrickFurnaceScreen;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -33,7 +33,6 @@ public class MasterfulMines {
 
         MMBlocks.register(modEventBus);
         MMItems.register(modEventBus);
-        MMTabs.register(modEventBus);
 
         MMBlockEntities.register(modEventBus);
         MMMenuTypes.register(modEventBus);
@@ -66,8 +65,8 @@ public class MasterfulMines {
     }
 
     @SubscribeEvent
-    public void buildContents(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTab() == MMTabs.MASTERFUL_MINES.get()) {
+    public void buildContents(CreativeModeTabEvent.BuildContents event) {
+        if (event.getTab() == MMTabs.MASTERFUL_MINES) {
             for (RegistryObject<Item> entry: MMItems.MASTERFUL_MINES_TAB_ITEMS) {
                 event.accept(entry);
             }

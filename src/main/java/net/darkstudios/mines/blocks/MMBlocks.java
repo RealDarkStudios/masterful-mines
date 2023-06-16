@@ -10,7 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -23,23 +23,23 @@ public class MMBlocks {
 
     /* FURNACES */
     public static final RegistryObject<Block> NETHER_BRICK_FURNACE = registerBlock("nether_brick_furnace",
-            () -> new NetherBrickFurnaceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.NETHER).strength(7, 30)),
+            () -> new NetherBrickFurnaceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(7, 30)),
             new Item.Properties());
 
     /* FORGIUM */
 
     public static final RegistryObject<Block> FORGIUM_BLOCK = registerBlock("forgium_block",
-            () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(7f, 100f).requiresCorrectToolForDrops()),
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(7f, 100f).requiresCorrectToolForDrops()),
             MMItems.FORGIUM_ITEM_PROPERTIES);
     public static final RegistryObject<Block> FORGIUM_ORE = registerBlock("forgium_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(5f, 30f)
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(5f, 30f)
                     .requiresCorrectToolForDrops(), UniformInt.of(2, 5)), MMItems.FORGIUM_ITEM_PROPERTIES);
 
     public static final RegistryObject<Block> STRONKIUM_BLOCK = registerBlock("stronkium_block",
-            () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(10, 200f).requiresCorrectToolForDrops()),
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE).strength(10, 200f).requiresCorrectToolForDrops()),
             MMItems.STRONKIUM_ITEM_PROPERTIES);
     public static final RegistryObject<Block> STRONKIUM_ORE = registerBlock("stronkium_ore",
-            () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(8f, 50f)
+            () -> new DropExperienceBlock(BlockBehaviour.Properties.of(Material.STONE).strength(8f, 50f)
                     .requiresCorrectToolForDrops(), UniformInt.of(4, 8)), MMItems.STRONKIUM_ITEM_PROPERTIES);
 
     private static <T extends Block> RegistryObject<T> registerBlock(String pName, Supplier<T> pBlock, Item.Properties pProperties) {
