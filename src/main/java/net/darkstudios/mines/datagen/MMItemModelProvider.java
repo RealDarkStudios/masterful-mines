@@ -2,7 +2,7 @@ package net.darkstudios.mines.datagen;
 
 import net.darkstudios.mines.MasterfulMines;
 import net.darkstudios.mines.items.MMItems;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.client.model.generators.ItemModelBuilder;
@@ -11,8 +11,8 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
 
 public class MMItemModelProvider extends ItemModelProvider {
-    public MMItemModelProvider(DataGenerator generator, ExistingFileHelper existingFileHelper) {
-        super(generator, MasterfulMines.MODID, existingFileHelper);
+    public MMItemModelProvider(PackOutput packOutput, ExistingFileHelper existingFileHelper) {
+        super(packOutput, MasterfulMines.MODID, existingFileHelper);
     }
 
     @Override

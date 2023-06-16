@@ -2,11 +2,8 @@ package net.darkstudios.mines.datagen;
 
 import net.darkstudios.mines.items.MMItems;
 import net.minecraft.advancements.critereon.ItemPredicate;
-import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
+import net.minecraft.data.PackOutput;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
@@ -15,29 +12,35 @@ import net.minecraftforge.common.crafting.conditions.IConditionBuilder;
 import java.util.function.Consumer;
 
 public class MMRecipeProvider extends RecipeProvider implements IConditionBuilder {
-    public MMRecipeProvider(DataGenerator pGenerator) {
-        super(pGenerator);
+    public MMRecipeProvider(PackOutput pPackOutput) {
+        super(pPackOutput);
     }
 
     @Override
-    protected void buildCraftingRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+    protected void buildRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         oreSmelting(pFinishedRecipeConsumer, MMItems.RAW_FORGIUM.get(), MMItems.FORGIUM_INGOT.get(), 2.0f, 200);
         oreBlasting(pFinishedRecipeConsumer, MMItems.RAW_FORGIUM.get(), MMItems.FORGIUM_INGOT.get(), 2.0f, 100);
+        oreSmelting(pFinishedRecipeConsumer, MMItems.RAW_STRONKIUM.get(), MMItems.STRONKIUM_INGOT.get(), 4.0f, 200);
+        oreBlasting(pFinishedRecipeConsumer, MMItems.RAW_STRONKIUM.get(), MMItems.STRONKIUM_INGOT.get(), 4.0f, 100);
 
         fullSet(pFinishedRecipeConsumer, MMItems.FORGIUM_INGOT.get(), MMItems.FORGIUM_SWORD.get(), MMItems.FORGIUM_PICKAXE.get(),
                 MMItems.FORGIUM_AXE.get(), MMItems.FORGIUM_SHOVEL.get(), MMItems.FORGIUM_HOE.get(), MMItems.FORGIUM_HELMET.get(),
                 MMItems.FORGIUM_CHESTPLATE.get(), MMItems.FORGIUM_LEGGINGS.get(), MMItems.FORGIUM_BOOTS.get());
+
+        fullSet(pFinishedRecipeConsumer, MMItems.STRONKIUM_INGOT.get(), MMItems.STRONKIUM_SWORD.get(), MMItems.STRONKIUM_PICKAXE.get(),
+                MMItems.STRONKIUM_AXE.get(), MMItems.STRONKIUM_SHOVEL.get(), MMItems.STRONKIUM_HOE.get(), MMItems.STRONKIUM_HELMET.get(),
+                MMItems.STRONKIUM_CHESTPLATE.get(), MMItems.STRONKIUM_LEGGINGS.get(), MMItems.STRONKIUM_BOOTS.get());
     }
 
     public static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIn, ItemLike pOut, float pExperience, int pDuration) {
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(pIn), pOut, pExperience, pDuration)
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(pIn), RecipeCategory.MISC, pOut, pExperience, pDuration)
                 .group(getItemName(pOut))
                 .unlockedBy(getHasName(pIn), inventoryTrigger(ItemPredicate.Builder.item().of(pIn).build()))
                 .save(pFinishedRecipeConsumer, String.format("smelting_%s_%s", getItemName(pIn), getItemName(pOut)));
     }
 
     public static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIn, ItemLike pOut, float pExperience, int pDuration) {
-        SimpleCookingRecipeBuilder.blasting(Ingredient.of(pIn), pOut, pExperience, pDuration)
+        SimpleCookingRecipeBuilder.blasting(Ingredient.of(pIn), RecipeCategory.MISC, pOut, pExperience, pDuration)
                 .group(getItemName(pOut))
                 .unlockedBy(getHasName(pIn), inventoryTrigger(ItemPredicate.Builder.item().of(pIn).build()))
                 .save(pFinishedRecipeConsumer, String.format("blasting_%s_%s", getItemName(pIn), getItemName(pOut)));
@@ -67,7 +70,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void helmet(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pHelmet) {
-        ShapedRecipeBuilder.shaped(pHelmet)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pHelmet)
                 .define('i', pIngot)
                 .pattern("iii")
                 .pattern("i i")
@@ -77,7 +80,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void chestplate(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pChestplate) {
-        ShapedRecipeBuilder.shaped(pChestplate)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pChestplate)
                 .define('i', pIngot)
                 .pattern("i i")
                 .pattern("iii")
@@ -88,7 +91,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void leggings(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pLeggings) {
-        ShapedRecipeBuilder.shaped(pLeggings)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pLeggings)
                 .define('i', pIngot)
                 .pattern("iii")
                 .pattern("i i")
@@ -99,7 +102,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void boots(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pBoots) {
-        ShapedRecipeBuilder.shaped(pBoots)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pBoots)
                 .define('i', pIngot)
                 .pattern("i i")
                 .pattern("i i")
@@ -109,7 +112,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void sword(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pSword) {
-        ShapedRecipeBuilder.shaped(pSword)
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pSword)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("i")
@@ -121,7 +124,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void pickaxe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pPickaxe) {
-        ShapedRecipeBuilder.shaped(pPickaxe)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pPickaxe)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("iii")
@@ -133,7 +136,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void axe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pAxe) {
-        ShapedRecipeBuilder.shaped(pAxe)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pAxe)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("ii")
@@ -143,7 +146,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
                 .save(pFinishedRecipeConsumer, String.format("%s_to_%s", getItemName(pIngot), getItemName(pAxe)));
 
-        ShapedRecipeBuilder.shaped(pAxe)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pAxe)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("ii")
@@ -155,7 +158,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void shovel(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pShovel) {
-        ShapedRecipeBuilder.shaped(pShovel)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pShovel)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("i")
@@ -167,7 +170,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void hoe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pHoe) {
-        ShapedRecipeBuilder.shaped(pHoe)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pHoe)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("ii")
@@ -177,7 +180,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
                 .save(pFinishedRecipeConsumer, String.format("%s_to_%s", getItemName(pIngot), getItemName(pHoe)));
 
-        ShapedRecipeBuilder.shaped(pHoe)
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pHoe)
                 .define('i', pIngot)
                 .define('s', Items.STICK)
                 .pattern("ii")

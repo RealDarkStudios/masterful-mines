@@ -2,13 +2,13 @@ package net.darkstudios.mines.datagen;
 
 import net.darkstudios.mines.MasterfulMines;
 import net.darkstudios.mines.blocks.MMBlocks;
-import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class MMBlocksStatesProvider extends BlockStateProvider {
-    public MMBlocksStatesProvider(DataGenerator gen, ExistingFileHelper exFileHelper) {
-        super(gen, MasterfulMines.MODID, exFileHelper);
+    public MMBlocksStatesProvider(PackOutput packOutput, ExistingFileHelper exFileHelper) {
+        super(packOutput, MasterfulMines.MODID, exFileHelper);
     }
 
     @Override

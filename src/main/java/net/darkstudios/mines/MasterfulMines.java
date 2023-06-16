@@ -2,10 +2,17 @@ package net.darkstudios.mines;
 
 import com.mojang.logging.LogUtils;
 import net.darkstudios.mines.blocks.MMBlocks;
+import net.darkstudios.mines.blocks.entity.MMBlockEntities;
 import net.darkstudios.mines.items.MMItems;
+import net.darkstudios.mines.items.MMTabs;
+import net.darkstudios.mines.screen.MMMenuTypes;
+import net.darkstudios.mines.screen.NetherBrickFurnaceScreen;
 import net.darkstudios.mines.world.feature.MMConfiguredFeatures;
 import net.darkstudios.mines.world.feature.MMPlacedFeatures;
+import net.minecraft.client.gui.screens.MenuScreens;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -13,6 +20,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.RegistryObject;
 import org.slf4j.Logger;
 
 @Mod(MasterfulMines.MODID)
@@ -27,12 +35,13 @@ public class MasterfulMines {
         MMBlocks.register(modEventBus);
         MMItems.register(modEventBus);
 
-        MMConfiguredFeatures.register(modEventBus);
-        MMPlacedFeatures.register(modEventBus);
+        MMBlockEntities.register(modEventBus);
+        MMMenuTypes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+        modEventBus.addListener(this::buildContents);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -51,6 +60,16 @@ public class MasterfulMines {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Masterful Mines Client is starting");
+
+            MenuScreens.register(MMMenuTypes.NETHER_BRICK_FURNACE_MENU.get(), NetherBrickFurnaceScreen::new);
+        }
+    }
+
+    public void buildContents(CreativeModeTabEvent.BuildContents event) {
+        if (event.getTab() == MMTabs.MASTERFUL_MINES) {
+            for (RegistryObject<Item> entry: MMItems.MASTERFUL_MINES_TAB_ITEMS) {
+                event.accept(entry);
+            }
         }
     }
 }
