@@ -1,7 +1,7 @@
 package net.darkstudios.mines.items;
 
 import net.darkstudios.mines.MasterfulMines;
-import net.darkstudios.rdslib.util.item.ArmorEffectMaterial;
+import net.darkstudios.rdslib.util.item.IArmorEffectMaterial;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.LazyLoadedValue;
@@ -15,10 +15,15 @@ import java.util.List;
 import java.util.function.Supplier;
 
 
-public enum MMArmorMaterials implements ArmorEffectMaterial {
+public enum MMArmorMaterials implements IArmorEffectMaterial {
     FORGIUM("forgium", 30, new int[]{4, 6, 8, 4}, 17, SoundEvents.ARMOR_EQUIP_NETHERITE,
             4.0F, 0.2F, () -> Ingredient.of(MMItems.FORGIUM_INGOT.get()), List.of(
             new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 1, 0)
+    )),
+    STRONKIUM("stronkium", 40, new int[]{4, 7, 8, 5}, 15, SoundEvents.ARMOR_EQUIP_NETHERITE,
+            5.0F, 0.4F, () -> Ingredient.of(MMItems.STRONKIUM_INGOT.get()), List.of(
+            new MobEffectInstance(MobEffects.DAMAGE_RESISTANCE, 1, 1),
+            new MobEffectInstance(MobEffects.ABSORPTION, 1, 0)
     ));
 
     private static final int[] HEALTH_PER_SLOT = new int[]{13, 15, 16, 11};

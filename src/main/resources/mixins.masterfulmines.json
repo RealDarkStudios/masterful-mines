@@ -3,8 +3,9 @@
   "minVersion": "0.8",
   "package": "net.darkstudios.mines.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "mines.refmap.json",
+  "refmap": "mixins.masterfulmines.refmap.json",
   "mixins": [
+
   ],
   "client": [
   ],
