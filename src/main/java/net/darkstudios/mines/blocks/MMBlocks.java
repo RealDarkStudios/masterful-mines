@@ -1,6 +1,7 @@
 package net.darkstudios.mines.blocks;
 
 import net.darkstudios.mines.MasterfulMines;
+import net.darkstudios.mines.blocks.custom.NetherBrickFurnaceBlock;
 import net.darkstudios.mines.items.MMItems;
 import net.minecraft.util.valueproviders.UniformInt;
 import net.minecraft.world.item.BlockItem;
@@ -9,6 +10,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -18,6 +20,13 @@ import java.util.function.Supplier;
 
 public class MMBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MasterfulMines.MODID);
+
+    /* FURNACES */
+    public static final RegistryObject<Block> NETHER_BRICK_FURNACE = registerBlock("nether_brick_furnace",
+            () -> new NetherBrickFurnaceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.NETHER).strength(7, 30)),
+            new Item.Properties());
+
+    /* FORGIUM */
 
     public static final RegistryObject<Block> FORGIUM_BLOCK = registerBlock("forgium_block",
             () -> new Block(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(7f, 100f).requiresCorrectToolForDrops()),

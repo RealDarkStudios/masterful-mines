@@ -1,6 +1,5 @@
 package net.darkstudios.mines.items;
 
-import com.ibm.icu.lang.UCharacter;
 import net.darkstudios.mines.MasterfulMines;
 //import net.darkstudios.mines.items.custom.BounciumBootsItem;
 import net.darkstudios.mines.items.custom.ForgiumAxeItem;

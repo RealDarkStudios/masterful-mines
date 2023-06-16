@@ -2,9 +2,13 @@ package net.darkstudios.mines;
 
 import com.mojang.logging.LogUtils;
 import net.darkstudios.mines.blocks.MMBlocks;
+import net.darkstudios.mines.blocks.entity.MMBlockEntities;
 import net.darkstudios.mines.items.MMItems;
 import net.darkstudios.mines.items.MMTabs;
 //import net.darkstudios.mines.items.custom.BounciumBootsItem;
+import net.darkstudios.mines.screen.MMMenuTypes;
+import net.darkstudios.mines.screen.NetherBrickFurnaceScreen;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -31,6 +35,9 @@ public class MasterfulMines {
         MMItems.register(modEventBus);
         MMTabs.register(modEventBus);
 
+        MMBlockEntities.register(modEventBus);
+        MMMenuTypes.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
@@ -53,6 +60,8 @@ public class MasterfulMines {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             LOGGER.info("Masterful Mines Client is starting");
+
+            MenuScreens.register(MMMenuTypes.NETHER_BRICK_FURNACE_MENU.get(), NetherBrickFurnaceScreen::new);
         }
     }
 
