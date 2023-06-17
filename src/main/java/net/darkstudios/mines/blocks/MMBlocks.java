@@ -9,6 +9,8 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.DropExperienceBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,13 +19,14 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.function.Supplier;
+import java.util.function.ToIntFunction;
 
 public class MMBlocks {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MasterfulMines.MODID);
 
     /* FURNACES */
     public static final RegistryObject<Block> NETHER_BRICK_FURNACE = registerBlock("nether_brick_furnace",
-            () -> new NetherBrickFurnaceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.NETHER).strength(7, 30)),
+            () -> new NetherBrickFurnaceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).mapColor(MapColor.NETHER).strength(7, 30).lightLevel(litBlockEmission(13))),
             new Item.Properties());
 
     /* FORGIUM */
@@ -41,6 +44,11 @@ public class MMBlocks {
     public static final RegistryObject<Block> STRONKIUM_ORE = registerBlock("stronkium_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(8f, 50f)
                     .requiresCorrectToolForDrops(), UniformInt.of(4, 8)), MMItems.STRONKIUM_ITEM_PROPERTIES);
+
+
+    private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {
+        return (block) -> block.getValue(BlockStateProperties.LIT) ? pLightValue : 0;
+    }
 
     private static <T extends Block> RegistryObject<T> registerBlock(String pName, Supplier<T> pBlock, Item.Properties pProperties) {
         RegistryObject<T> toReturn = BLOCKS.register(pName, pBlock);

@@ -21,8 +21,6 @@ public class NetherBrickFurnaceScreen extends AbstractContainerScreen<NetherBric
         super.init();
     }
 
-    // TODO: 6/17/2023 FIX TEXTURES
-
     // blit(TEXTURE, draw @ x, draw @ y, copy @ x, copy @ y, x size, y size)
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
@@ -30,19 +28,19 @@ public class NetherBrickFurnaceScreen extends AbstractContainerScreen<NetherBric
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
 
-        int x = (width - 200) / 2;
-        int y = (height - 166) / 2;
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
 
         pGuiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
         if (this.menu.isLit()) {
             int k = this.menu.getScaledLitProgress();
-            pGuiGraphics.blit(TEXTURE, x + 56, y + 36 + 12 - k, 176, 12 - k, 14, k);
+            pGuiGraphics.blit(TEXTURE, x + 57, y + 36 + 13 - k, 176, 12 - k, 14, k);
         }
 
         if (this.menu.isCooking()) {
             int l = this.menu.getScaledCookingProgress();
-            pGuiGraphics.blit(TEXTURE, x + 79, x + 34, 176, 14, menu.getScaledCookingProgress(), 17);
+            pGuiGraphics.blit(TEXTURE, x + 79, y + 34, 176, 14, menu.getScaledCookingProgress(), 17);
         }
     }
 

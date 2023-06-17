@@ -16,6 +16,8 @@
 
   "block.masterfulmines.forgium_block": "Forgium Block",
   "block.masterfulmines.forgium_ore": "Forgium Ore",
+  "block.masterfulmines.nether_brick_furnace": "Nether Brick Furnace",
 
-  "container.nether_brick_furnace": "Nether Brick Furnace"
+  "container.nether_brick_furnace": "Nether Brick Furnace",
+  "tag.item.masterfulmines.fuel_buckets": "Fuel Buckets"
 }

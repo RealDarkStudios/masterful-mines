@@ -1,5 +1,8 @@
 package net.darkstudios.mines.blocks.entity;
 
+import com.google.common.collect.Lists;
+import it.unimi.dsi.fastutil.objects.Object2IntMap;
+import it.unimi.dsi.fastutil.objects.Object2IntOpenHashMap;
 import net.darkstudios.mines.blocks.custom.NetherBrickFurnaceBlock;
 import net.darkstudios.mines.items.MMItems;
 import net.darkstudios.mines.recipe.MMRecipes;
@@ -13,8 +16,11 @@ import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.*;
+import net.minecraft.world.entity.ExperienceOrb;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
@@ -32,6 +38,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.AbstractFurnaceBlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.util.LazyOptional;
@@ -40,6 +47,7 @@ import net.minecraftforge.items.ItemStackHandler;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Optional;
 
 public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuProvider {
@@ -57,6 +65,7 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
     private int maxCookingProgress = 22;
     private int litProgress = 0;
     private int maxLitProgress = 14;
+    private final Object2IntOpenHashMap<ResourceLocation> recipesUsed = new Object2IntOpenHashMap<>();
 
     public NetherBrickFurnaceBlockEntity(BlockPos pos, BlockState state) {
         super(MMBlockEntities.NETHER_BRICK_FURNACE.get(), pos, state);
@@ -198,6 +207,7 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
                     pBlockEntity.cookingProgress = 0;
                     pBlockEntity.maxCookingProgress = getTotalCookTime(recipe.get());
                     if (pBlockEntity.burn(pLevel.registryAccess(), recipe.get(), pBlockEntity.itemHandler, i)) {
+                        pBlockEntity.setRecipeUsed(recipe.get());
                     }
 
                     finishCooking = true;
@@ -276,5 +286,90 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
 
     private static int getTotalCookTime(NetherBrickFurnaceRecipe recipe) {
         return recipe.getCookingTime();
+    }
+
+    public void setRecipeUsed(@javax.annotation.Nullable Recipe<?> pRecipe) {
+        if (pRecipe != null) {
+            ResourceLocation resourcelocation = pRecipe.getId();
+            this.recipesUsed.addTo(resourcelocation, 1);
+        }
+
+    }
+
+    @javax.annotation.Nullable
+    public Recipe<?> getRecipeUsed() {
+        return null;
+    }
+
+    public void awardUsedRecipes(Player p_58396_, List<ItemStack> p_282202_) {
+    }
+
+    private static final int[] SLOTS_FOR_UP = new int[]{0};
+    private static final int[] SLOTS_FOR_DOWN = new int[]{2, 1};
+    private static final int[] SLOTS_FOR_SIDES = new int[]{1};
+
+    public int[] getSlotsForFace(Direction pSide) {
+        if (pSide == Direction.DOWN) {
+            return SLOTS_FOR_DOWN;
+        } else {
+            return pSide == Direction.UP ? SLOTS_FOR_UP : SLOTS_FOR_SIDES;
+        }
+    }
+
+    /**
+     * Returns {@code true} if automation can insert the given item in the given slot from the given side.
+     */
+    public boolean canPlaceItemThroughFace(int pIndex, ItemStack pItemStack, @javax.annotation.Nullable Direction pDirection) {
+        return this.canPlaceItem(pIndex, pItemStack);
+    }
+
+    /**
+     * Returns {@code true} if automation can extract the given item in the given slot from the given side.
+     */
+    public boolean canTakeItemThroughFace(int pIndex, ItemStack pStack, Direction pDirection) {
+        if (pDirection == Direction.DOWN && pIndex == 1) {
+            return pStack.is(Items.WATER_BUCKET) || pStack.is(Items.BUCKET);
+        } else {
+            return true;
+        }
+    }
+
+    public boolean canPlaceItem(int pIndex, ItemStack pStack) {
+        if (pIndex == 2) {
+            return false;
+        } else if (pIndex != 1) {
+            return true;
+        } else {
+            ItemStack fuelStack = this.itemHandler.getStackInSlot(1);
+            return fuelStack.is(MMTags.Items.FUEL_BUCKETS);
+        }
+    }
+
+    public void awardUsedRecipesAndPopExperience(ServerPlayer pPlayer) {
+        List<Recipe<?>> list = this.getRecipesToAwardAndPopExperience(pPlayer.serverLevel(), pPlayer.position());
+        pPlayer.awardRecipes(list);
+    }
+
+    public List<Recipe<?>> getRecipesToAwardAndPopExperience(ServerLevel pLevel, Vec3 pPopVec) {
+        List<Recipe<?>> list = Lists.newArrayList();
+
+        for(Object2IntMap.Entry<ResourceLocation> entry : this.recipesUsed.object2IntEntrySet()) {
+            pLevel.getRecipeManager().byKey(entry.getKey()).ifPresent((recipe) -> {
+                list.add(recipe);
+                createExperience(pLevel, pPopVec, entry.getIntValue(), ((NetherBrickFurnaceRecipe) recipe).getExperience());
+            });
+        }
+
+        return list;
+    }
+
+    private static void createExperience(ServerLevel pLevel, Vec3 pPopVec, int pRecipeIndex, float pExperience) {
+        int i = Mth.floor((float)pRecipeIndex * pExperience);
+        float f = Mth.frac((float)pRecipeIndex * pExperience);
+        if (f != 0.0F && Math.random() < (double)f) {
+            ++i;
+        }
+
+        ExperienceOrb.award(pLevel, pPopVec, i);
     }
 }
