@@ -21,24 +21,31 @@ public class NetherBrickFurnaceScreen extends AbstractContainerScreen<NetherBric
         super.init();
     }
 
+    // TODO: 6/17/2023 FIX TEXTURES
+
+    // blit(TEXTURE, draw @ x, draw @ y, copy @ x, copy @ y, x size, y size)
     @Override
     protected void renderBg(GuiGraphics pGuiGraphics, float pPartialTick, int pMouseX, int pMouseY) {
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.setShaderTexture(0, TEXTURE);
-        int x = (width - imageWidth) / 2;
-        int y = (height - imageHeight) / 2;
+
+        int x = (width - 200) / 2;
+        int y = (height - 166) / 2;
 
         pGuiGraphics.blit(TEXTURE, x, y, 0, 0, imageWidth, imageHeight);
 
-        renderProgressArrow(pGuiGraphics, x, y);
-    }
+        if (this.menu.isLit()) {
+            int k = this.menu.getScaledLitProgress();
+            pGuiGraphics.blit(TEXTURE, x + 56, y + 36 + 12 - k, 176, 12 - k, 14, k);
+        }
 
-    private void renderProgressArrow(GuiGraphics pGuiGraphics, int x, int y) {
-        if (menu.isCrafting()) {
-            pGuiGraphics.blit(TEXTURE, x + 105, y + 33, 176, 0, 8, menu.getScaledProgress());
+        if (this.menu.isCooking()) {
+            int l = this.menu.getScaledCookingProgress();
+            pGuiGraphics.blit(TEXTURE, x + 79, x + 34, 176, 14, menu.getScaledCookingProgress(), 17);
         }
     }
+
 
     @Override
     public void render(GuiGraphics pGuiGraphics, int mouseX, int mouseY, float delta) {

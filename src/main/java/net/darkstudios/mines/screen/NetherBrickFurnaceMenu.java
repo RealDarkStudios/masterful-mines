@@ -2,6 +2,10 @@ package net.darkstudios.mines.screen;
 
 import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.blocks.entity.NetherBrickFurnaceBlockEntity;
+import net.darkstudios.mines.recipe.NetherBrickFurnaceRecipe;
+import net.darkstudios.mines.screen.slot.FuelSlot;
+import net.darkstudios.mines.screen.slot.OutputSlot;
+import net.darkstudios.mines.util.MMTags;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -11,7 +15,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.items.SlotItemHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class NetherBrickFurnaceMenu extends AbstractContainerMenu {
     public final NetherBrickFurnaceBlockEntity blockEntity;
@@ -20,7 +23,7 @@ public class NetherBrickFurnaceMenu extends AbstractContainerMenu {
 
 
     public NetherBrickFurnaceMenu(int id, Inventory inv, FriendlyByteBuf extraData) {
-        this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(2));
+        this(id, inv, inv.player.level().getBlockEntity(extraData.readBlockPos()), new SimpleContainerData(4));
     }
 
     public NetherBrickFurnaceMenu(int id, Inventory inv, BlockEntity entity, ContainerData data) {
@@ -34,22 +37,41 @@ public class NetherBrickFurnaceMenu extends AbstractContainerMenu {
         addPlayerHotbar(inv);
 
         this.blockEntity.getCapability(ForgeCapabilities.ITEM_HANDLER).ifPresent(handler -> {
-            this.addSlot(new SlotItemHandler(handler, 0, 12, 15));
-            this.addSlot(new SlotItemHandler(handler, 1, 86, 15));
-            this.addSlot(new SlotItemHandler(handler, 2, 86, 60));
+            this.addSlot(new SlotItemHandler(handler, 0, 56, 17));
+            this.addSlot(new FuelSlot(handler, 1, 56, 53));
+            this.addSlot(new OutputSlot(handler, 2, 116, 35));
         });
 
         addDataSlots(data);
     }
 
-    public boolean isCrafting() {
+    public boolean isCooking() {
         return data.get(0) > 0;
     }
+    public boolean isLit() {
+        return data.get(2) > 0;
+    }
 
-    public int getScaledProgress() {
+    public int getCookingProgress() {
+        return data.get(0);
+    }
+
+    public int getLitProgress() {
+        return data.get(1);
+    }
+
+    public int getScaledCookingProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
-        int progressArrowSize = 26; // This is the height in pixels of your arrow
+        int progressArrowSize = 22; // This is the height in pixels of your arrow
+
+        return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getScaledLitProgress() {
+        int progress = this.data.get(2);
+        int maxProgress = this.data.get(3);  // Max Progress
+        int progressArrowSize = 14; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
     }

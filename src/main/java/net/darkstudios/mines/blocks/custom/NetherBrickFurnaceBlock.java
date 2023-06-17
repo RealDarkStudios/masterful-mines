@@ -20,6 +20,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,6 +30,7 @@ import org.jetbrains.annotations.Nullable;
 
 public class NetherBrickFurnaceBlock extends BaseEntityBlock {
     public static final DirectionProperty FACING = BlockStateProperties.HORIZONTAL_FACING;
+    public static final BooleanProperty LIT = BlockStateProperties.LIT;
 
     public NetherBrickFurnaceBlock(Properties pProperties) {
         super(pProperties);
@@ -60,7 +62,7 @@ public class NetherBrickFurnaceBlock extends BaseEntityBlock {
     }
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext pContext) {
-        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite());
+        return this.defaultBlockState().setValue(FACING, pContext.getHorizontalDirection().getOpposite()).setValue(LIT, false);
     }
     @Override
     public BlockState rotate(BlockState pState, Rotation pRotation) {
@@ -68,6 +70,7 @@ public class NetherBrickFurnaceBlock extends BaseEntityBlock {
     }
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING);
+        builder.add(LIT);
     }
 
     @Override

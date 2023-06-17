@@ -15,5 +15,7 @@
   "item.masterfulmines.forgium_boots": "Forgium Boots",
 
   "block.masterfulmines.forgium_block": "Forgium Block",
-  "block.masterfulmines.forgium_ore": "Forgium Ore"
+  "block.masterfulmines.forgium_ore": "Forgium Ore",
+
+  "container.nether_brick_furnace": "Nether Brick Furnace"
 }
