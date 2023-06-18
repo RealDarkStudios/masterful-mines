@@ -2,6 +2,7 @@ package net.darkstudios.mines.datagen;
 
 import com.google.common.collect.ImmutableList;
 import net.darkstudios.mines.MasterfulMines;
+import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.items.MMItems;
 import net.darkstudios.mines.recipe.MMFurnaceRecipeBuilder;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -30,6 +31,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
         ore(pFinishedRecipeConsumer, MMItems.RAW_STRONKIUM.get(), MMItems.STRONKIUM_INGOT.get(), 4.0f, 200);
 
         addCustomFurnaceRecipes(pFinishedRecipeConsumer);
+        customFurnaceRecipe(pFinishedRecipeConsumer, MMBlocks.NETHER_BRICK_FURNACE.get(), Blocks.NETHER_BRICKS, Blocks.FURNACE);
 
         fullSet(pFinishedRecipeConsumer, MMItems.FORGIUM_INGOT.get(), MMItems.FORGIUM_SWORD.get(), MMItems.FORGIUM_PICKAXE.get(),
                 MMItems.FORGIUM_AXE.get(), MMItems.FORGIUM_SHOVEL.get(), MMItems.FORGIUM_HOE.get(), MMItems.FORGIUM_HELMET.get(),
@@ -210,6 +212,18 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .group(getItemName(pHoe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
                 .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s2", getItemName(pIngot), getItemName(pHoe))));
+    }
+
+    public static void customFurnaceRecipe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pCustomFurnace, ItemLike pOuterBlock, ItemLike pInnerBlock) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pCustomFurnace)
+                .define('i', pInnerBlock)
+                .define('o', pOuterBlock)
+                .pattern("ooo")
+                .pattern("oio")
+                .pattern("ooo")
+                .group(getItemName(pCustomFurnace))
+                .unlockedBy(getHasName(pOuterBlock), inventoryTrigger(ItemPredicate.Builder.item().of(pOuterBlock).build()))
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pCustomFurnace)));
     }
 
     public static final ImmutableList<ItemLike> COAL_SMELTABLES = ImmutableList.of(Items.COAL_ORE, Items.DEEPSLATE_COAL_ORE);
