@@ -10,7 +10,7 @@ import dev.emi.emi.api.stack.EmiStack;
 import net.darkstudios.mines.MasterfulMines;
 import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.recipe.NetherBrickFurnaceRecipe;
-import net.darkstudios.rdslib.util.recipe.FurnaceRecipe;
+import net.darkstudios.rdslib.util.recipe.AbstractFurnaceLikeRecipe;
 import net.darkstudios.rdslib.util.recipe.integration.EMIFurnaceRecipe;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.RecipeManager;
@@ -30,7 +30,7 @@ public class EMIPlugin implements EmiPlugin {
 
         RecipeManager rm = registry.getRecipeManager();
 
-        for (FurnaceRecipe recipe: rm.getAllRecipesFor(NetherBrickFurnaceRecipe.Type.INSTANCE)) {
+        for (AbstractFurnaceLikeRecipe recipe: rm.getAllRecipesFor(NetherBrickFurnaceRecipe.Type.INSTANCE)) {
             registry.addRecipe(new EMIFurnaceRecipe(recipe, NETHER_BRICK_FURNACE_CATEGORY, 4, false));
         }
     }

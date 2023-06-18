@@ -18,6 +18,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
+import java.util.List;
 import java.util.function.Supplier;
 import java.util.function.ToIntFunction;
 
@@ -44,6 +45,9 @@ public class MMBlocks {
     public static final RegistryObject<Block> STRONKIUM_ORE = registerBlock("stronkium_ore",
             () -> new DropExperienceBlock(BlockBehaviour.Properties.of().instrument(NoteBlockInstrument.BASEDRUM).strength(8f, 50f)
                     .requiresCorrectToolForDrops(), UniformInt.of(4, 8)), MMItems.STRONKIUM_ITEM_PROPERTIES);
+
+    public static final List<RegistryObject<Block>> MASTERFUL_MINES_TAB_BLOCKS = List.of(NETHER_BRICK_FURNACE, FORGIUM_ORE, FORGIUM_BLOCK,
+            STRONKIUM_ORE, STRONKIUM_BLOCK);
 
 
     private static ToIntFunction<BlockState> litBlockEmission(int pLightValue) {

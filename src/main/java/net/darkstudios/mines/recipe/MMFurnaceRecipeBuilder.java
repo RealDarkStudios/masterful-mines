@@ -109,25 +109,17 @@ public class MMFurnaceRecipeBuilder implements RecipeBuilder {
             return this.serializer;
         }
 
-        /**
-         * Gets the ID for the recipe.
-         */
+
         public ResourceLocation getId() {
             return this.id;
         }
 
-        /**
-         * Gets the JSON for the advancement that unlocks this recipe. Null if there is no advancement.
-         */
+
         @javax.annotation.Nullable
         public JsonObject serializeAdvancement() {
             return this.advancement.serializeToJson();
         }
 
-        /**
-         * Gets the ID for the advancement associated with this recipe. Should not be null if {@link #getAdvancementJson}
-         * is non-null.
-         */
         @Nullable
         public ResourceLocation getAdvancementId() {
             return this.advancementId;

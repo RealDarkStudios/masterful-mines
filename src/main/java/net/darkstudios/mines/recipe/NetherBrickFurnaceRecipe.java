@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.darkstudios.mines.MasterfulMines;
-import net.darkstudios.rdslib.util.recipe.FurnaceRecipe;
+import net.darkstudios.rdslib.util.recipe.AbstractFurnaceLikeRecipe;
 import net.minecraft.core.NonNullList;
 import net.minecraft.core.RegistryAccess;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,7 +18,7 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public class NetherBrickFurnaceRecipe extends FurnaceRecipe {
+public class NetherBrickFurnaceRecipe extends AbstractFurnaceLikeRecipe {
     protected final ResourceLocation id;
     protected final String group;
     protected final Ingredient ingredient;
