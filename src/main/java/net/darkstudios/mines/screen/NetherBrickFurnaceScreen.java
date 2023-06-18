@@ -39,8 +39,8 @@ public class NetherBrickFurnaceScreen extends AbstractContainerScreen<NetherBric
         }
 
         if (this.menu.isCooking()) {
-            int l = this.menu.getScaledCookingProgress();
-            pGuiGraphics.blit(TEXTURE, x + 79, y + 34, 176, 14, menu.getScaledCookingProgress(), 17);
+            int l = this.menu.getFixedScaledCookingProgress();
+            pGuiGraphics.blit(TEXTURE, x + 79, y + 34, 176, 14, menu.getFixedScaledCookingProgress(), 17);
         }
     }
 

@@ -38,7 +38,7 @@ public class MMFurnaceRecipeBuilder implements RecipeBuilder {
         this.serializer = pSerializer;
     }
 
-    public static MMFurnaceRecipeBuilder netherBrickFurnace(Ingredient pIngredient, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime) {
+    public static MMFurnaceRecipeBuilder netherBrickSmelting(Ingredient pIngredient, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime) {
         return new MMFurnaceRecipeBuilder(pCategory, pResult, pIngredient, pExperience, pCookingTime, MMRecipes.NETHER_BRICK_FURNACE.get());
     }
 

@@ -19,5 +19,8 @@
   "block.masterfulmines.nether_brick_furnace": "Nether Brick Furnace",
 
   "container.nether_brick_furnace": "Nether Brick Furnace",
-  "tag.item.masterfulmines.fuel_buckets": "Fuel Buckets"
+
+  "tag.item.masterfulmines.fuel_buckets": "Fuel Buckets",
+
+  "emi.category.masterfulmines.nether_brick_furnace": "Nether Brick Furnace"
 }

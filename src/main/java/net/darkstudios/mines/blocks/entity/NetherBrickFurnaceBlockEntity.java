@@ -188,6 +188,7 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
                 pBlockEntity.litProgress = pBlockEntity.getBurnDuration(ingredient);
                 if (pBlockEntity.isLit()) {
                     finishCooking = true;
+                    setChanged(pLevel, pPos, pState);
                     if (ingredient.hasCraftingRemainingItem())
                         pBlockEntity.itemHandler.setStackInSlot(1, ingredient.getCraftingRemainingItem());
                     else
@@ -203,6 +204,7 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
 
             if (pBlockEntity.isLit() && recipe.isPresent() && pBlockEntity.canBurn(pLevel.registryAccess(), recipe.get(), pBlockEntity.itemHandler, i)) {
                 ++pBlockEntity.cookingProgress;
+                setChanged(pLevel, pPos, pState);
                 if (pBlockEntity.cookingProgress == pBlockEntity.maxCookingProgress) {
                     pBlockEntity.cookingProgress = 0;
                     pBlockEntity.maxCookingProgress = getTotalCookTime(recipe.get());
@@ -217,18 +219,15 @@ public class NetherBrickFurnaceBlockEntity extends BlockEntity implements MenuPr
             }
         } else if (!pBlockEntity.isLit() && pBlockEntity.cookingProgress > 0) {
             pBlockEntity.cookingProgress = Mth.clamp(pBlockEntity.cookingProgress - 2, 0, pBlockEntity.maxCookingProgress);
+            setChanged(pLevel, pPos, pState);
         }
 
         if (isLit != pBlockEntity.isLit()) {
             finishCooking = true;
+            setChanged(pLevel, pPos, pState);
             pState = pState.setValue(NetherBrickFurnaceBlock.LIT, pBlockEntity.isLit());
             pLevel.setBlock(pPos, pState, 3);
         }
-
-        if (finishCooking) {
-            setChanged(pLevel, pPos, pState);
-        }
-
     }
 
     private boolean canBurn(RegistryAccess registryAccess,  NetherBrickFurnaceRecipe recipe, ItemStackHandler items, int currentItems) {

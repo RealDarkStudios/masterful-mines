@@ -58,12 +58,20 @@ public class NetherBrickFurnaceMenu extends AbstractContainerMenu {
         return data.get(1);
     }
 
-    public int getScaledCookingProgress() {
+    private int getScaledCookingProgress() {
         int progress = this.data.get(0);
         int maxProgress = this.data.get(1);  // Max Progress
         int progressArrowSize = 22; // This is the height in pixels of your arrow
 
         return maxProgress != 0 && progress != 0 ? progress * progressArrowSize / maxProgress : 0;
+    }
+
+    public int getFixedScaledCookingProgress() {
+        int progress = this.data.get(0);
+        int maxProgress = this.data.get(1);  // Max Progress
+        int scaledProgress = getScaledCookingProgress();
+
+        return scaledProgress > maxProgress ? scaledProgress % maxProgress : scaledProgress;
     }
 
     public int getScaledLitProgress() {
