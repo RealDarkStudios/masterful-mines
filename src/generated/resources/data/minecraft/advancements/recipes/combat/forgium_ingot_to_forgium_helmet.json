@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:forgium_ingot_to_forgium_helmet"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

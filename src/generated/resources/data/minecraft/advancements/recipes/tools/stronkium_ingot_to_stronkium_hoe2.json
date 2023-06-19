@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:stronkium_ingot_to_stronkium_hoe2"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

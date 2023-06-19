@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:forgium_ingot_to_forgium_axe2"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

@@ -1,5 +1,6 @@
-// 1.20	2023-06-13T16:58:37.9741118	Loot Tables
-9e88e45e39afea267a897a4353e6b338e96b8ba0 data/masterfulmines/loot_tables/blocks/forgium_block.json
-0f0c4356d3acacce7dc0355c5edcc79268b9c452 data/masterfulmines/loot_tables/blocks/forgium_ore.json
-cdb0ec178b8be8285608cf219a5071a17cd9b02f data/masterfulmines/loot_tables/blocks/stronkium_block.json
-b9e055142f20c97fad32263cd722b820af4ea156 data/masterfulmines/loot_tables/blocks/stronkium_ore.json
+// 1.19.4	2023-06-18T13:42:11.5446093	Loot Tables
+cd8078a3e6186040dfcfe204033a4da236d3ec86 data/masterfulmines/loot_tables/blocks/forgium_block.json
+3d70dbf069c53aec83e6bf1eaea8401e2e03bfc3 data/masterfulmines/loot_tables/blocks/forgium_ore.json
+dce7636ad3b555d92b644d9bd69809ff9392a17d data/masterfulmines/loot_tables/blocks/nether_brick_furnace.json
+a811562fe78d59aa0cd2f18ab6923c515d253095 data/masterfulmines/loot_tables/blocks/stronkium_block.json
+c6ab77d3f20285c9a731b18d334955ce3ea1e5ff data/masterfulmines/loot_tables/blocks/stronkium_ore.json

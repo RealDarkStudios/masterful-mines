@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "nether_brick_furnace",
+  "key": {
+    "i": {
+      "item": "minecraft:furnace"
+    },
+    "o": {
+      "item": "minecraft:nether_bricks"
+    }
+  },
+  "pattern": [
+    "ooo",
+    "oio",
+    "ooo"
+  ],
+  "result": {
+    "item": "masterfulmines:nether_brick_furnace"
+  },
+  "show_notification": true
+}

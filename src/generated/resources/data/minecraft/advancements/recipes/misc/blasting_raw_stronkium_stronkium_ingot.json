@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:blasting_raw_stronkium_stronkium_ingot"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }

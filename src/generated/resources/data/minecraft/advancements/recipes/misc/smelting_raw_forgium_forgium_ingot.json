@@ -30,6 +30,5 @@
     "recipes": [
       "minecraft:smelting_raw_forgium_forgium_ingot"
     ]
-  },
-  "sends_telemetry_event": false
+  }
 }
