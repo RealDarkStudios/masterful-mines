@@ -76,7 +76,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     }
 
     public static void fullToolSet(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pSword, ItemLike pPickaxe,
-                                    ItemLike pAxe, ItemLike pShovel, ItemLike pHoe) {
+                                   ItemLike pAxe, ItemLike pShovel, ItemLike pHoe) {
         sword(pFinishedRecipeConsumer, pIngot, pSword);
         pickaxe(pFinishedRecipeConsumer, pIngot, pPickaxe);
         axe(pFinishedRecipeConsumer, pIngot, pAxe);
@@ -99,7 +99,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("i i")
                 .group(getItemName(pHelmet))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pHelmet))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pHelmet)));
     }
 
     public static void chestplate(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pChestplate) {
@@ -110,7 +110,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("iii")
                 .group(getItemName(pChestplate))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pChestplate))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pChestplate)));
     }
 
     public static void leggings(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pLeggings) {
@@ -121,7 +121,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("i i")
                 .group(getItemName(pLeggings))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pLeggings))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pLeggings)));
     }
 
     public static void boots(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pBoots) {
@@ -131,7 +131,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("i i")
                 .group(getItemName(pBoots))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pBoots))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pBoots)));
     }
 
     public static void sword(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pSword) {
@@ -143,7 +143,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("s")
                 .group(getItemName(pSword))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pSword))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pSword)));
     }
 
     public static void pickaxe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pPickaxe) {
@@ -155,7 +155,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" s ")
                 .group(getItemName(pPickaxe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pPickaxe))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pPickaxe)));
     }
 
     public static void axe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pAxe) {
@@ -167,7 +167,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" s")
                 .group(getItemName(pAxe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pAxe))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pAxe)));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pAxe)
                 .define('i', pIngot)
@@ -177,7 +177,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("s ")
                 .group(getItemName(pAxe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s2", getItemName(pIngot), getItemName(pAxe))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pAxe) + "2"));
     }
 
     public static void shovel(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pShovel) {
@@ -189,7 +189,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("s")
                 .group(getItemName(pShovel))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pShovel))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pShovel)));
     }
 
     public static void hoe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pIngot, ItemLike pHoe) {
@@ -201,7 +201,7 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern(" s")
                 .group(getItemName(pHoe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s", getItemName(pIngot), getItemName(pHoe))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pHoe)));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, pHoe)
                 .define('i', pIngot)
@@ -211,8 +211,9 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
                 .pattern("s ")
                 .group(getItemName(pHoe))
                 .unlockedBy(getHasName(pIngot), inventoryTrigger(ItemPredicate.Builder.item().of(pIngot).build()))
-                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, String.format("%s_to_%s2", getItemName(pIngot), getItemName(pHoe))));
+                .save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pHoe) + "2"));
     }
+
 
     public static void customFurnaceRecipe(Consumer<FinishedRecipe> pFinishedRecipeConsumer, ItemLike pCustomFurnace, ItemLike pOuterBlock, ItemLike pInnerBlock) {
         ShapedRecipeBuilder.shaped(RecipeCategory.COMBAT, pCustomFurnace)
@@ -234,7 +235,17 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
     public static final ImmutableList<ItemLike> LAPIS_SMELTABLES = ImmutableList.of(Items.LAPIS_ORE, Items.DEEPSLATE_LAPIS_ORE);
     public static final ImmutableList<ItemLike> REDSTONE_SMELTABLES = ImmutableList.of(Items.REDSTONE_ORE, Items.DEEPSLATE_REDSTONE_ORE);
     public static final ImmutableList<ItemLike> EMERALD_SMELTABLES = ImmutableList.of(Items.EMERALD_ORE, Items.DEEPSLATE_EMERALD_ORE);
-    
+    public static final ImmutableList<ItemLike> TERRACOTTAS = ImmutableList.of(Blocks.BLACK_TERRACOTTA, Blocks.BLUE_TERRACOTTA, Blocks.BROWN_TERRACOTTA,
+            Blocks.CYAN_TERRACOTTA, Blocks.GRAY_TERRACOTTA, Blocks.GREEN_TERRACOTTA, Blocks.LIGHT_BLUE_TERRACOTTA, Blocks.LIGHT_GRAY_TERRACOTTA, Blocks.LIME_TERRACOTTA,
+            Blocks.MAGENTA_TERRACOTTA, Blocks.ORANGE_TERRACOTTA, Blocks.PINK_TERRACOTTA, Blocks.PURPLE_TERRACOTTA, Blocks.RED_TERRACOTTA, Blocks.WHITE_TERRACOTTA, Blocks.YELLOW_TERRACOTTA);
+    public static final ImmutableList<ItemLike> GLAZED_TERRACOTTAS = ImmutableList.of(Blocks.BLACK_GLAZED_TERRACOTTA, Blocks.BLUE_GLAZED_TERRACOTTA, Blocks.BROWN_GLAZED_TERRACOTTA,
+            Blocks.CYAN_GLAZED_TERRACOTTA, Blocks.GRAY_GLAZED_TERRACOTTA, Blocks.GREEN_GLAZED_TERRACOTTA, Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA,
+            Blocks.LIME_GLAZED_TERRACOTTA, Blocks.MAGENTA_GLAZED_TERRACOTTA, Blocks.ORANGE_GLAZED_TERRACOTTA, Blocks.PINK_GLAZED_TERRACOTTA, Blocks.PURPLE_GLAZED_TERRACOTTA,
+            Blocks.RED_GLAZED_TERRACOTTA, Blocks.WHITE_GLAZED_TERRACOTTA, Blocks.YELLOW_GLAZED_TERRACOTTA);
+
+    public static final ImmutableList<String> COLORS = ImmutableList.of("black", "blue", "brown", "cyan", "gray", "green", "light_blue", "light_gray", "lime", "magenta", "orange",
+            "pink", "purple", "red", "white", "yellow");
+
     public static void addCustomFurnaceRecipes (Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
         oreNetherBrickSmelting(pFinishedRecipeConsumer, COAL_SMELTABLES, RecipeCategory.MISC, Items.COAL, 0.1F, 50, "coal");
         oreNetherBrickSmelting(pFinishedRecipeConsumer, IRON_SMELTABLES, RecipeCategory.MISC, Items.IRON_INGOT, 0.7F, 50, "iron_ingot");
@@ -244,57 +255,52 @@ public class MMRecipeProvider extends RecipeProvider implements IConditionBuilde
         oreNetherBrickSmelting(pFinishedRecipeConsumer, LAPIS_SMELTABLES, RecipeCategory.MISC, Items.LAPIS_LAZULI, 0.2F, 50, "lapis_lazuli");
         oreNetherBrickSmelting(pFinishedRecipeConsumer, REDSTONE_SMELTABLES, RecipeCategory.REDSTONE, Items.REDSTONE, 0.7F, 50, "redstone");
         oreNetherBrickSmelting(pFinishedRecipeConsumer, EMERALD_SMELTABLES, RecipeCategory.MISC, Items.EMERALD, 1.0F, 50, "emerald");
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(ItemTags.SMELTS_TO_GLASS), RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS.asItem(), 0.1F, 50).unlockedBy("has_smelts_to_glass", has(ItemTags.SMELTS_TO_GLASS)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 0.1F, 50).unlockedBy("has_sea_pickle", has(Blocks.SEA_PICKLE)).save(pFinishedRecipeConsumer, getSmeltingRecipeName(Items.LIME_DYE));
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.CACTUS.asItem()), RecipeCategory.MISC, Items.GREEN_DYE, 1.0F, 50).unlockedBy("has_cactus", has(Blocks.CACTUS)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Items.GOLDEN_PICKAXE, Items.GOLDEN_SHOVEL, Items.GOLDEN_AXE, Items.GOLDEN_HOE, Items.GOLDEN_SWORD, Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS, Items.GOLDEN_HORSE_ARMOR), RecipeCategory.MISC, Items.GOLD_NUGGET, 0.1F, 50).unlockedBy("has_golden_pickaxe", has(Items.GOLDEN_PICKAXE)).unlockedBy("has_golden_shovel", has(Items.GOLDEN_SHOVEL)).unlockedBy("has_golden_axe", has(Items.GOLDEN_AXE)).unlockedBy("has_golden_hoe", has(Items.GOLDEN_HOE)).unlockedBy("has_golden_sword", has(Items.GOLDEN_SWORD)).unlockedBy("has_golden_helmet", has(Items.GOLDEN_HELMET)).unlockedBy("has_golden_chestplate", has(Items.GOLDEN_CHESTPLATE)).unlockedBy("has_golden_leggings", has(Items.GOLDEN_LEGGINGS)).unlockedBy("has_golden_boots", has(Items.GOLDEN_BOOTS)).unlockedBy("has_golden_horse_armor", has(Items.GOLDEN_HORSE_ARMOR)).save(pFinishedRecipeConsumer, getSmeltingRecipeName(Items.GOLD_NUGGET));
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Items.IRON_PICKAXE, Items.IRON_SHOVEL, Items.IRON_AXE, Items.IRON_HOE, Items.IRON_SWORD, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS, Items.IRON_HORSE_ARMOR, Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1F, 50).unlockedBy("has_iron_pickaxe", has(Items.IRON_PICKAXE)).unlockedBy("has_iron_shovel", has(Items.IRON_SHOVEL)).unlockedBy("has_iron_axe", has(Items.IRON_AXE)).unlockedBy("has_iron_hoe", has(Items.IRON_HOE)).unlockedBy("has_iron_sword", has(Items.IRON_SWORD)).unlockedBy("has_iron_helmet", has(Items.IRON_HELMET)).unlockedBy("has_iron_chestplate", has(Items.IRON_CHESTPLATE)).unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS)).unlockedBy("has_iron_boots", has(Items.IRON_BOOTS)).unlockedBy("has_iron_horse_armor", has(Items.IRON_HORSE_ARMOR)).unlockedBy("has_chainmail_helmet", has(Items.CHAINMAIL_HELMET)).unlockedBy("has_chainmail_chestplate", has(Items.CHAINMAIL_CHESTPLATE)).unlockedBy("has_chainmail_leggings", has(Items.CHAINMAIL_LEGGINGS)).unlockedBy("has_chainmail_boots", has(Items.CHAINMAIL_BOOTS)).save(pFinishedRecipeConsumer, getSmeltingRecipeName(Items.IRON_NUGGET));
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 0.35F, 50).unlockedBy("has_clay_block", has(Blocks.CLAY)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.NETHERRACK), RecipeCategory.MISC, Items.NETHER_BRICK, 0.1F, 50).unlockedBy("has_netherrack", has(Blocks.NETHERRACK)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), RecipeCategory.MISC, Items.QUARTZ, 0.2F, 50).unlockedBy("has_nether_quartz_ore", has(Blocks.NETHER_QUARTZ_ORE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.WET_SPONGE), RecipeCategory.BUILDING_BLOCKS, Blocks.SPONGE.asItem(), 0.15F, 50).unlockedBy("has_wet_sponge", has(Blocks.WET_SPONGE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.COBBLESTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.STONE.asItem(), 0.1F, 50).unlockedBy("has_cobblestone", has(Blocks.COBBLESTONE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.STONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE.asItem(), 0.1F, 50).unlockedBy("has_stone", has(Blocks.STONE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_SANDSTONE.asItem(), 0.1F, 50).unlockedBy("has_sandstone", has(Blocks.SANDSTONE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.RED_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_RED_SANDSTONE.asItem(), 0.1F, 50).unlockedBy("has_red_sandstone", has(Blocks.RED_SANDSTONE)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.QUARTZ_BLOCK), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_QUARTZ.asItem(), 0.1F, 50).unlockedBy("has_quartz_block", has(Blocks.QUARTZ_BLOCK)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, Blocks.CRACKED_STONE_BRICKS.asItem(), 0.1F, 50).unlockedBy("has_stone_bricks", has(Blocks.STONE_BRICKS)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.BLACK_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BLACK_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_black_terracotta", has(Blocks.BLACK_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.BLUE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BLUE_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_blue_terracotta", has(Blocks.BLUE_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.BROWN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.BROWN_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_brown_terracotta", has(Blocks.BROWN_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.CYAN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.CYAN_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_cyan_terracotta", has(Blocks.CYAN_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.GRAY_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.GRAY_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_gray_terracotta", has(Blocks.GRAY_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.GREEN_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.GREEN_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_green_terracotta", has(Blocks.GREEN_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.LIGHT_BLUE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIGHT_BLUE_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_light_blue_terracotta", has(Blocks.LIGHT_BLUE_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.LIGHT_GRAY_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIGHT_GRAY_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_light_gray_terracotta", has(Blocks.LIGHT_GRAY_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.LIME_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.LIME_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_lime_terracotta", has(Blocks.LIME_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.MAGENTA_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.MAGENTA_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_magenta_terracotta", has(Blocks.MAGENTA_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.ORANGE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.ORANGE_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_orange_terracotta", has(Blocks.ORANGE_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.PINK_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.PINK_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_pink_terracotta", has(Blocks.PINK_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.PURPLE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.PURPLE_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_purple_terracotta", has(Blocks.PURPLE_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.RED_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.RED_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_red_terracotta", has(Blocks.RED_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.WHITE_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.WHITE_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_white_terracotta", has(Blocks.WHITE_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.YELLOW_TERRACOTTA), RecipeCategory.DECORATIONS, Blocks.YELLOW_GLAZED_TERRACOTTA.asItem(), 0.1F, 50).unlockedBy("has_yellow_terracotta", has(Blocks.YELLOW_TERRACOTTA)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.ANCIENT_DEBRIS), RecipeCategory.MISC, Items.NETHERITE_SCRAP, 2.0F, 50).unlockedBy("has_ancient_debris", has(Blocks.ANCIENT_DEBRIS)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.BASALT), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_BASALT, 0.1F, 50).unlockedBy("has_basalt", has(Blocks.BASALT)).save(pFinishedRecipeConsumer);
-        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE, 0.1F, 50).unlockedBy("has_cobbled_deepslate", has(Blocks.COBBLED_DEEPSLATE)).save(pFinishedRecipeConsumer);
+        netherBrickTerracottaRecipes(pFinishedRecipeConsumer);
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(ItemTags.SAND), RecipeCategory.BUILDING_BLOCKS, Blocks.GLASS.asItem(), 0.1F, 50).unlockedBy("has_sand", has(ItemTags.SAND)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.GLASS) + "_from_nether_brick_smelting_" + getItemName(Blocks.SAND)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.SEA_PICKLE), RecipeCategory.MISC, Items.LIME_DYE, 0.1F, 50).unlockedBy("has_sea_pickle", has(Blocks.SEA_PICKLE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getSmeltingRecipeName(Items.LIME_DYE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.CACTUS.asItem()), RecipeCategory.MISC, Items.GREEN_DYE, 1.0F, 50).unlockedBy("has_cactus", has(Blocks.CACTUS)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Items.GREEN_DYE) + "_from_nether_brick_smelting_" + getItemName(Blocks.CACTUS)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Items.GOLDEN_PICKAXE, Items.GOLDEN_SHOVEL, Items.GOLDEN_AXE, Items.GOLDEN_HOE, Items.GOLDEN_SWORD, Items.GOLDEN_HELMET, Items.GOLDEN_CHESTPLATE, Items.GOLDEN_LEGGINGS, Items.GOLDEN_BOOTS, Items.GOLDEN_HORSE_ARMOR), RecipeCategory.MISC, Items.GOLD_NUGGET, 0.1F, 50).unlockedBy("has_golden_pickaxe", has(Items.GOLDEN_PICKAXE)).unlockedBy("has_golden_shovel", has(Items.GOLDEN_SHOVEL)).unlockedBy("has_golden_axe", has(Items.GOLDEN_AXE)).unlockedBy("has_golden_hoe", has(Items.GOLDEN_HOE)).unlockedBy("has_golden_sword", has(Items.GOLDEN_SWORD)).unlockedBy("has_golden_helmet", has(Items.GOLDEN_HELMET)).unlockedBy("has_golden_chestplate", has(Items.GOLDEN_CHESTPLATE)).unlockedBy("has_golden_leggings", has(Items.GOLDEN_LEGGINGS)).unlockedBy("has_golden_boots", has(Items.GOLDEN_BOOTS)).unlockedBy("has_golden_horse_armor", has(Items.GOLDEN_HORSE_ARMOR)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getSmeltingRecipeName(Items.GOLD_NUGGET)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Items.IRON_PICKAXE, Items.IRON_SHOVEL, Items.IRON_AXE, Items.IRON_HOE, Items.IRON_SWORD, Items.IRON_HELMET, Items.IRON_CHESTPLATE, Items.IRON_LEGGINGS, Items.IRON_BOOTS, Items.IRON_HORSE_ARMOR, Items.CHAINMAIL_HELMET, Items.CHAINMAIL_CHESTPLATE, Items.CHAINMAIL_LEGGINGS, Items.CHAINMAIL_BOOTS), RecipeCategory.MISC, Items.IRON_NUGGET, 0.1F, 50).unlockedBy("has_iron_pickaxe", has(Items.IRON_PICKAXE)).unlockedBy("has_iron_shovel", has(Items.IRON_SHOVEL)).unlockedBy("has_iron_axe", has(Items.IRON_AXE)).unlockedBy("has_iron_hoe", has(Items.IRON_HOE)).unlockedBy("has_iron_sword", has(Items.IRON_SWORD)).unlockedBy("has_iron_helmet", has(Items.IRON_HELMET)).unlockedBy("has_iron_chestplate", has(Items.IRON_CHESTPLATE)).unlockedBy("has_iron_leggings", has(Items.IRON_LEGGINGS)).unlockedBy("has_iron_boots", has(Items.IRON_BOOTS)).unlockedBy("has_iron_horse_armor", has(Items.IRON_HORSE_ARMOR)).unlockedBy("has_chainmail_helmet", has(Items.CHAINMAIL_HELMET)).unlockedBy("has_chainmail_chestplate", has(Items.CHAINMAIL_CHESTPLATE)).unlockedBy("has_chainmail_leggings", has(Items.CHAINMAIL_LEGGINGS)).unlockedBy("has_chainmail_boots", has(Items.CHAINMAIL_BOOTS)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getSmeltingRecipeName(Items.IRON_NUGGET)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.CLAY), RecipeCategory.BUILDING_BLOCKS, Blocks.TERRACOTTA.asItem(), 0.35F, 50).unlockedBy("has_clay_block", has(Blocks.CLAY)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.TERRACOTTA) + "_from_nether_brick_smelting_" + getItemName(Blocks.CLAY)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.NETHERRACK), RecipeCategory.MISC, Items.NETHER_BRICK, 0.1F, 50).unlockedBy("has_netherrack", has(Blocks.NETHERRACK)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.NETHER_BRICKS) + "_from_nether_brick_smelting_" + getItemName(Blocks.NETHERRACK)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.NETHER_QUARTZ_ORE), RecipeCategory.MISC, Items.QUARTZ, 0.2F, 50).unlockedBy("has_nether_quartz_ore", has(Blocks.NETHER_QUARTZ_ORE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Items.QUARTZ) + "_from_nether_brick_smelting_" + getItemName(Blocks.NETHER_QUARTZ_ORE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.WET_SPONGE), RecipeCategory.BUILDING_BLOCKS, Blocks.SPONGE.asItem(), 0.15F, 50).unlockedBy("has_wet_sponge", has(Blocks.WET_SPONGE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SPONGE) + "_from_nether_brick_smelting_" + getItemName(Blocks.WET_SPONGE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.COBBLESTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.STONE.asItem(), 0.1F, 50).unlockedBy("has_cobblestone", has(Blocks.COBBLESTONE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.STONE) + "_from_nether_brick_smelting_" + getItemName(Blocks.COBBLESTONE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.STONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_STONE.asItem(), 0.1F, 50).unlockedBy("has_stone", has(Blocks.STONE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SMOOTH_STONE) + "_from_nether_brick_smelting_" + getItemName(Blocks.STONE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_SANDSTONE.asItem(), 0.1F, 50).unlockedBy("has_sandstone", has(Blocks.SANDSTONE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SMOOTH_SANDSTONE) + "_from_nether_brick_smelting_" + getItemName(Blocks.SANDSTONE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.RED_SANDSTONE), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_RED_SANDSTONE.asItem(), 0.1F, 50).unlockedBy("has_red_sandstone", has(Blocks.RED_SANDSTONE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SMOOTH_RED_SANDSTONE) + "_from_nether_brick_smelting_" + getItemName(Blocks.RED_SANDSTONE)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.QUARTZ_BLOCK), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_QUARTZ.asItem(), 0.1F, 50).unlockedBy("has_quartz_block", has(Blocks.QUARTZ_BLOCK)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SMOOTH_QUARTZ) + "_from_nether_brick_smelting_" + getItemName(Blocks.QUARTZ_BLOCK)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.STONE_BRICKS), RecipeCategory.BUILDING_BLOCKS, Blocks.CRACKED_STONE_BRICKS.asItem(), 0.1F, 50).unlockedBy("has_stone_bricks", has(Blocks.STONE_BRICKS)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.CRACKED_STONE_BRICKS) + "_from_nether_brick_smelting_" + getItemName(Blocks.STONE_BRICKS)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.ANCIENT_DEBRIS), RecipeCategory.MISC, Items.NETHERITE_SCRAP, 2.0F, 50).unlockedBy("has_ancient_debris", has(Blocks.ANCIENT_DEBRIS)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Items.NETHERITE_SCRAP) + "_from_nether_brick_smelting_" + getItemName(Blocks.ANCIENT_DEBRIS)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.BASALT), RecipeCategory.BUILDING_BLOCKS, Blocks.SMOOTH_BASALT, 0.1F, 50).unlockedBy("has_basalt", has(Blocks.BASALT)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.SMOOTH_BASALT) + "_from_nether_brick_smelting_" + getItemName(Blocks.BASALT)));
+        MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(Blocks.COBBLED_DEEPSLATE), RecipeCategory.BUILDING_BLOCKS, Blocks.DEEPSLATE, 0.1F, 50).unlockedBy("has_cobbled_deepslate", has(Blocks.COBBLED_DEEPSLATE)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(Blocks.DEEPSLATE) + "_from_nether_brick_smelting_" + getItemName(Blocks.COBBLED_DEEPSLATE)));
     }
 
     public static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
         for(ItemLike itemlike : pIngredients) {
-            SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(pResult) + "from_smelting_" + getItemName(itemlike));
+            SimpleCookingRecipeBuilder.smelting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pResult) + "_from_smelting_" + getItemName(itemlike)));
         }
     }
 
     public static void oreBlasting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTime, String pGroup) {
         for(ItemLike itemlike : pIngredients) {
-            SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(pResult) + "from_blasting_" + getItemName(itemlike));
+            SimpleCookingRecipeBuilder.blasting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pResult) + "_from_blasting_" + getItemName(itemlike)));
         }
     }
 
     public static void oreNetherBrickSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, Item pResult, float pExperience, int pCookingTime, String pGroup) {
         for(ItemLike itemlike : pIngredients) {
-            MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, getItemName(pResult) + "from_nether_brick_smelting_" + getItemName(itemlike));
+            MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(itemlike), pCategory, pResult, pExperience, pCookingTime).group(pGroup).unlockedBy(getHasName(itemlike), has(itemlike)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(pResult) + "_from_nether_brick_smelting_" + getItemName(itemlike)));
+        }
+    }
+
+    public static void netherBrickTerracottaRecipes(Consumer<FinishedRecipe> pFinishedRecipeConsumer) {
+        for(int i = 0; i < TERRACOTTAS.size(); i++) {
+            ItemLike terracotta = TERRACOTTAS.get(i);
+            ItemLike glazedTerracotta = GLAZED_TERRACOTTAS.get(i);
+            String color = COLORS.get(i);
+
+            MMFurnaceRecipeBuilder.netherBrickSmelting(Ingredient.of(terracotta), RecipeCategory.DECORATIONS, glazedTerracotta, 0.1F, 50).unlockedBy(String.format("has_%s_terracotta", color), has(Blocks.YELLOW_TERRACOTTA)).save(pFinishedRecipeConsumer, new ResourceLocation(MasterfulMines.MODID, getItemName(glazedTerracotta) + "_from_nether_brick_smelting_" + getItemName(terracotta)));
         }
     }
 }
