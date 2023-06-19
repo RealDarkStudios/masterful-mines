@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stronkium_axe",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "ii",
+    "is",
+    " s"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_axe"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "minecraft:smelting",
+  "cookingtime": 200,
+  "experience": 4.0,
+  "group": "stronkium_ingot",
+  "ingredient": {
+    "item": "masterfulmines:raw_stronkium"
+  },
+  "result": "masterfulmines:stronkium_ingot"
+}

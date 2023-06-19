@@ -4,6 +4,7 @@ import com.mojang.logging.LogUtils;
 import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.blocks.entity.MMBlockEntities;
 import net.darkstudios.mines.items.MMItems;
+import net.darkstudios.mines.recipe.MMRecipes;
 import net.darkstudios.mines.screen.MMMenuTypes;
 import net.darkstudios.mines.screen.NetherBrickFurnaceScreen;
 import net.darkstudios.mines.world.feature.MMConfiguredFeatures;
@@ -36,6 +37,8 @@ public class MasterfulMines {
 
         MMBlockEntities.register(modEventBus);
         MMMenuTypes.register(modEventBus);
+
+        MMRecipes.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 

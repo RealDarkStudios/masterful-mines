@@ -1,0 +1,10 @@
+{
+  "type": "masterfulmines:nether_brick_furnace",
+  "cookingtime": 50,
+  "experience": 1.0,
+  "group": "gold_ingot",
+  "ingredient": {
+    "item": "minecraft:deepslate_gold_ore"
+  },
+  "result": "minecraft:gold_ingot"
+}

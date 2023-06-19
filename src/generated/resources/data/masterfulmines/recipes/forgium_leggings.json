@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "forgium_leggings",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    }
+  },
+  "pattern": [
+    "iii",
+    "i i",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_leggings"
+  }
+}

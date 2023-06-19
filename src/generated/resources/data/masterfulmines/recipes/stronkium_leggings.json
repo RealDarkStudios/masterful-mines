@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "group": "stronkium_leggings",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    }
+  },
+  "pattern": [
+    "iii",
+    "i i",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_leggings"
+  }
+}
