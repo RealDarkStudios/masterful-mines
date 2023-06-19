@@ -1,0 +1,10 @@
+{
+  "type": "masterfulmines:nether_brick_furnace",
+  "cookingtime": 50,
+  "experience": 1.0,
+  "group": "diamond",
+  "ingredient": {
+    "item": "minecraft:diamond_ore"
+  },
+  "result": "minecraft:diamond"
+}

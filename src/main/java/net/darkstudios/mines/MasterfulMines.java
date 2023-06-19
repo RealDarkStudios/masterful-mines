@@ -5,12 +5,13 @@ import net.darkstudios.mines.blocks.MMBlocks;
 import net.darkstudios.mines.blocks.entity.MMBlockEntities;
 import net.darkstudios.mines.items.MMItems;
 import net.darkstudios.mines.items.MMTabs;
+//import net.darkstudios.mines.items.custom.BounciumBootsItem;
+import net.darkstudios.mines.recipe.MMRecipes;
 import net.darkstudios.mines.screen.MMMenuTypes;
 import net.darkstudios.mines.screen.NetherBrickFurnaceScreen;
-import net.darkstudios.mines.world.feature.MMConfiguredFeatures;
-import net.darkstudios.mines.world.feature.MMPlacedFeatures;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -38,15 +39,17 @@ public class MasterfulMines {
         MMBlockEntities.register(modEventBus);
         MMMenuTypes.register(modEventBus);
 
+        MMRecipes.register(modEventBus);
+
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
+
         modEventBus.addListener(this::buildContents);
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         LOGGER.info("Masterful Mines is starting");
-
     }
 
     @SubscribeEvent
@@ -65,9 +68,13 @@ public class MasterfulMines {
         }
     }
 
+    @SubscribeEvent
     public void buildContents(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == MMTabs.MASTERFUL_MINES) {
             for (RegistryObject<Item> entry: MMItems.MASTERFUL_MINES_TAB_ITEMS) {
+                event.accept(entry);
+            }
+            for (RegistryObject<Block> entry: MMBlocks.MASTERFUL_MINES_TAB_BLOCKS) {
                 event.accept(entry);
             }
         }

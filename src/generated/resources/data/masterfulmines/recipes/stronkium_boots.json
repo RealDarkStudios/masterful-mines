@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_boots",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    }
+  },
+  "pattern": [
+    "i i",
+    "i i"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_boots"
+  }
+}

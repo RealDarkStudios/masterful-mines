@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "forgium_sword",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "i",
+    "i",
+    "s"
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_sword"
+  }
+}

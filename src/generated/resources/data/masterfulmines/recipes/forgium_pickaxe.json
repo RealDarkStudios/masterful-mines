@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "forgium_pickaxe",
+  "key": {
+    "i": {
+      "item": "masterfulmines:forgium_ingot"
+    },
+    "s": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "iii",
+    " s ",
+    " s "
+  ],
+  "result": {
+    "item": "masterfulmines:forgium_pickaxe"
+  }
+}

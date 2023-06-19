@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "group": "stronkium_chestplate",
+  "key": {
+    "i": {
+      "item": "masterfulmines:stronkium_ingot"
+    }
+  },
+  "pattern": [
+    "i i",
+    "iii",
+    "iii"
+  ],
+  "result": {
+    "item": "masterfulmines:stronkium_chestplate"
+  }
+}

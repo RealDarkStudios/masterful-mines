@@ -24,6 +24,7 @@ public class MMTags {
     }
 
     public static class Items {
+        public static final TagKey<Item> FUEL_BUCKETS = tag("fuel_buckets");
 
         private static TagKey<Item> tag(String name) {
             return ItemTags.create(new ResourceLocation(MasterfulMines.MODID, name));
